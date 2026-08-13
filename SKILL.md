@@ -51,15 +51,15 @@ hilink modem (192.168.8.1)      ← modem "j1"/E3276, WAN OpenWrt
 OpenWrt Rumahkiringan
    ├─ br-lan (eth0) = 192.168.1.1/24   → LAN (DHCP .100-.248, 12h)
    ├─ utun 198.18.0.1/30               → TUN OpenClash (fake-ip)
-   └─ tailscale0 100.115.150.54        → Tailscale (tailnet dnacakep@)
+   └─ tailscale0                      → Tailscale (tailnet pribadi)
 ```
 
 - `wan` = eth1 → **hilink modem** (`192.168.8.1`) sebagai default gateway.
 - `lan` = br-lan (eth0) → DHCP server, force, 192.168.1.100–248.
 - **DNS**: dnsmasq `noresolv 1` + `server 127.0.0.1#7874` → semua DNS lewat
   OpenClash (fake-ip 198.18.0.1/16). DNS listen di 192.168.1.1, 192.168.8.100,
-  198.18.0.1, dan 100.115.150.54 (Tailscale).
-- Static host DHCP: `armbian` → 192.168.1.192 (MAC 00:E0:4C:68:14:DD).
+  198.18.0.1 (dan IP Tailscale).
+- Static host DHCP: `armbian` → 192.168.1.192.
 - IPv6 off (tidak ada wan6).
 
 ## UCI & file config penting
@@ -89,7 +89,7 @@ OpenWrt Rumahkiringan
 | uhttpd (Luci) | 80/443 | Web admin, theme material |
 | OpenClash (clash/mihomo) | 7890 http, 7891 socks, 7892 redir, 7893 mixed, 7895 tproxy, 7874 dns, 9090 controller | Proxy tun utun (fake-ip), config `Starakun.yaml` |
 | Nikki | — | Terpasang tapi disabled (`enabled 0`) |
-| Tailscale | 41641 | tailnet `dnacakep@`, IP 100.115.150.54 |
+| Tailscale | 41641 | Tailscale terpasang (tailnet pribadi) |
 | ttyd | 7681 | Web terminal `/bin/bash --login` |
 | netdata | 19999 (8125 local) | Monitoring (halaman `/netdata.html`) |
 | php8-fpm | 1026 | Untuk aplikasi PHP tambahan |

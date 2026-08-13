@@ -12,7 +12,7 @@ npx skills add dnacakep/skill-openwrt-config
 
 - **Konfigurasi network & firewall (UCI)** — br-lan, WAN eth1 → modem hilink, DHCP, DNS via OpenClash
 - **OpenClash** — proxy tun fake-ip (utun 198.18.0.1), port 7890–7895, DNS 7874
-- **Tailscale** — tailnet dnacakep@, IP 100.115.150.54
+- **Tailscale** — akses remote aman via tailnet pribadi
 - **Aplikasi PHP di /www** — RakitanManager (monitor modem inject + Telegram), TinyFM, vnstati
 - **Layanan modem** — sms_tool (SMS via LED), ModemManager
 - **Monitoring** — netdata, nlbwmon, vnstat, smartd
